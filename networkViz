@@ -18,12 +18,12 @@ library(htmlwidgets)
 
 
 
-tempLinks<-read.csv(file="dataset.csv",header=T)
+tempLinks<-read.csv(file="SimultaneosScraping.csv",header=T, stringAsFactors=F)
 # Read a data set which contains 3 columns: SOURCE_NODE, TARGET_NODE & WEIGHT of the edge connecting these 2 nodes.
 
-edgeList<-subset(tempLinks,select=c(1,3))
-edgeList$Weight <- sample(10, size = nrow(edgeList), replace = TRUE)
-edgeList<-(subset(edgeList,node_1<5000))
+edgeList<-tempLinks
+edgeList$Weight <- sample(10, size = nrow(edgeList), replace = TRUE)#Initialising random weights from 1 to 10 as we dont have weights in our network graph
+
 colnames(edgeList) <- c("SourceName", "TargetName", "Weight")
 
 
